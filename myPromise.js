@@ -45,7 +45,7 @@ function Promise(fn) {
 // then
 Promise.prototype.then = function(onFulfilled, onRejected) {
   const that = this;
-  // 需要判断传入的参数是否为函数，如果不是函数需要创建一个函数赋值给对应参数，同时实现来透传
+  // 需要判断传入的参数是否为函数，如果不是函数需要创建一个函数赋值给对应参数，同时实现透传
   onFulfilled = typeof onFulfilled == 'function' ? onFulfilled : v => v;
   onRejected = typeof onRejected == 'function' ? onRejected : v =>　{ throw v }
   
@@ -75,5 +75,5 @@ new Promise(function(resolve, reject) {
   console.log(res) // 1
   return 2;
 }).then(res => {
-  console.log(2);
+  console.log(res); // 2
 })
